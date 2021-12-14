@@ -1,0 +1,93 @@
+# extended LDIF
+#
+# LDAPv3
+# base <dc=cesga,dc=es> with scope subtree
+# filter: (objectclass=*)
+# requesting: ALL
+#
+
+# cesga.es
+dn: dc=cesga,dc=es
+objectClass: dcObject
+objectClass: organization
+dc: cesga
+o: EGI
+
+# users, cesga.es
+dn: ou=users,dc=cesga,dc=es
+objectClass: organizationalUnit
+ou: users
+
+# usershpc, users.cesga.es
+dn: ou=usershpc,ou=users,dc=cesga,dc=es
+objectClass: organizationalUnit
+ou: usershpc
+
+# groups, cesga.es
+dn: ou=groups,dc=cesga,dc=es
+objectClass: organizationalUnit
+ou: groups
+
+# groupshpc, users.cesga.es
+dn: ou=groupshpc,ou=groups,dc=cesga,dc=es
+objectClass: organizationalUnit
+ou: groupshpc
+
+# # Add Diana Gudu to the organization
+# dn: uid=curso998,ou=usershpc,ou=users,dc=cesga,dc=es
+# # changetype: modify
+# objectClass: top
+# objectClass: inetOrgPerson
+# objectClass: posixAccount
+# uid: curso998
+# sn: Gudu
+# cn: Diana Gudu
+# description: Diana Gudu's EGI identity
+# loginShell: /bin/bash
+# uidNumber: 40998
+# gidNumber: 113
+# homeDirectory: /home/cesga/cursos/curso998
+# gecos: c2370093c19496aeb46103cce3ccdc7b183f54ac9ba9c859dea94dfba23aacd5%40egi.eu@https%3A%2F%2Faai.egi.eu%2Foidc%2F
+# o: EGI
+# labeledURI: c2370093c19496aeb46103cce3ccdc7b183f54ac9ba9c859dea94dfba23aacd5%40egi.eu@https%3A%2F%2Faai.egi.eu%2Foidc%2F
+
+# dn: cn=uidNext,ou=usershpc,ou=users,dc=cesga,dc=es
+# objectClass: uidNext
+# cn: uidNext
+# uidNumber: 10001
+
+dn: uid=dgudu,ou=usershpc,ou=users,dc=cesga,dc=es
+# changetype: modify
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: posixAccount
+uid: dgudu
+sn: dgudu
+cn: dgudu
+loginShell: /bin/bash
+uidNumber: 40998
+gidNumber: 999
+homeDirectory: /home/cesga/cursos/dgudu
+
+# # add VO as group
+# dn: cn=cesga,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# objectClass: top
+# objectClass: posixGroup
+# cn: cesga
+# gidNumber: 113
+# description: EOSC Synergy group
+# # memberUid: curso998
+
+dn: cn=egi-eu_mteam-data-kit-edu,ou=groupshpc,ou=groups,dc=cesga,dc=es
+objectClass: top
+objectClass: posixGroup
+cn: egi-eu_mteam-data-kit-edu
+gidNumber: 999
+description: A egi-eu_mteam-data-kit-edu group
+
+dn: cn=egi-eu_eosc-synergy-eu,ou=groupshpc,ou=groups,dc=cesga,dc=es
+objectClass: top
+objectClass: posixGroup
+cn: egi-eu_eosc-synergy-eu
+gidNumber: 998
+description: A egi-eu_eosc-synergy-eu group

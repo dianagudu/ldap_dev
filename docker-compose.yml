@@ -1,0 +1,70 @@
+version: '3'
+
+volumes:
+  motley_cue_sock:
+  openldap_data:
+    driver: local
+
+networks:
+  my-network:
+    driver: bridge
+
+services:
+  motley_cue_pam_ssh_dev:
+    build:
+      context: .
+      target: motley_cue_pam_ssh_dev
+    init: true
+    restart: on-failure
+    depends_on:
+      ldap:
+        condition: service_healthy
+    ports:
+      - "1022:22"
+    environment:
+      - UID
+      - GID
+      - SHELL
+    volumes:
+      - ${CONFIG_FOLDER}:/config_files
+      - motley_cue_sock:/run/motley_cue
+      - ${SRC_FOLDER}:/src
+    networks:
+      - my-network
+
+  nginx:
+    build:
+      context: .
+      target: nginx
+    restart: on-failure
+    hostname: "mc_endpoint"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ${CONFIG_FOLDER}:/config_files
+      - motley_cue_sock:/run/motley_cue
+    networks:
+      - my-network
+
+  ldap:
+    image: bitnami/openldap
+    ports:
+      - '1389:1389'
+      - '1636:1636'
+    hostname: "ldap_server"
+    environment:
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=adminpassword
+      - LDAP_ALLOW_ANON_BINDING=yes
+      - LDAP_ROOT=dc=cesga,dc=es
+      - BITNAMI_DEBUG=true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "ldap://localhost:1389"]
+      interval: 1s
+      timeout: 1s
+      retries: 3
+    networks:
+      - my-network
+    volumes:
+      - ${LDIF_FOLDER}:/ldifs
+      - openldap_data:/bitnami/openldap

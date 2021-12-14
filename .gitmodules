@@ -1,0 +1,8 @@
+[submodule "motley_cue"]
+	path = src/motley_cue
+  url = git@github.com:dianagudu/motley_cue.git
+
+[submodule "feudal_adapter"]
+  path = src/feudalAdapterLdf
+  url = git@git.scc.kit.edu:feudal/feudalAdapterLdf.git
+  branch = ldap
