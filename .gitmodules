@@ -3,5 +3,5 @@
 	url = git@github.com:dianagudu/motley_cue.git
 [submodule "src/feudalAdapterLdf"]
 	path = src/feudalAdapterLdf
-	url = git@git.scc.kit.edu:feudal/feudalAdapterLdf.git
+	url = https://git.scc.kit.edu/feudal/feudalAdapterLdf.git
 	branch = ldap
