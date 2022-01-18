@@ -51,43 +51,38 @@ ou: groupshpc
 # o: EGI
 # labeledURI: c2370093c19496aeb46103cce3ccdc7b183f54ac9ba9c859dea94dfba23aacd5%40egi.eu@https%3A%2F%2Faai.egi.eu%2Foidc%2F
 
-# dn: cn=uidNext,ou=usershpc,ou=users,dc=cesga,dc=es
-# objectClass: uidNext
-# cn: uidNext
-# uidNumber: 10001
+# dn: uid=dgudu,ou=usershpc,ou=users,dc=cesga,dc=es
+# # changetype: modify
+# objectClass: top
+# objectClass: inetOrgPerson
+# objectClass: posixAccount
+# uid: dgudu
+# sn: dgudu
+# cn: dgudu
+# loginShell: /bin/bash
+# uidNumber: 40998
+# gidNumber: 999
+# homeDirectory: /home/cesga/cursos/dgudu
 
-dn: uid=dgudu,ou=usershpc,ou=users,dc=cesga,dc=es
-# changetype: modify
+# add VO as group
+dn: cn=cesga,ou=groupshpc,ou=groups,dc=cesga,dc=es
 objectClass: top
-objectClass: inetOrgPerson
-objectClass: posixAccount
-uid: dgudu
-sn: dgudu
-cn: dgudu
-loginShell: /bin/bash
-uidNumber: 40998
-gidNumber: 999
-homeDirectory: /home/cesga/cursos/dgudu
+objectClass: posixGroup
+cn: cesga
+gidNumber: 1000
+description: EOSC Synergy group
+# memberUid: curso998
 
-# # add VO as group
-# dn: cn=cesga,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# dn: cn=egi-eu_mteam-data-kit-edu,ou=groupshpc,ou=groups,dc=cesga,dc=es
 # objectClass: top
 # objectClass: posixGroup
-# cn: cesga
-# gidNumber: 113
-# description: EOSC Synergy group
-# # memberUid: curso998
+# cn: egi-eu_mteam-data-kit-edu
+# gidNumber: 999
+# description: A egi-eu_mteam-data-kit-edu group
 
-dn: cn=egi-eu_mteam-data-kit-edu,ou=groupshpc,ou=groups,dc=cesga,dc=es
-objectClass: top
-objectClass: posixGroup
-cn: egi-eu_mteam-data-kit-edu
-gidNumber: 999
-description: A egi-eu_mteam-data-kit-edu group
-
-dn: cn=egi-eu_eosc-synergy-eu,ou=groupshpc,ou=groups,dc=cesga,dc=es
-objectClass: top
-objectClass: posixGroup
-cn: egi-eu_eosc-synergy-eu
-gidNumber: 998
-description: A egi-eu_eosc-synergy-eu group
+# dn: cn=egi-eu_eosc-synergy-eu,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# objectClass: top
+# objectClass: posixGroup
+# cn: egi-eu_eosc-synergy-eu
+# gidNumber: 998
+# description: A egi-eu_eosc-synergy-eu group

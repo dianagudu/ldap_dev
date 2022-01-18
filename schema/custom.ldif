@@ -1,0 +1,23 @@
+# extended LDIF
+#
+# LDAPv3
+#
+
+dn: cn=debops,cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: debops
+olcObjectIdentifier: {0}DebOps 1.3.6.1.4.1.53622
+olcObjectIdentifier: {1}DebOpsLDAP DebOps:42
+
+
+dn: cn=nextuidgid,cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: nextuidgid
+olcObjectIdentifier: {0}nextUidGid DebOpsLDAP:3
+olcObjectIdentifier: {1}nextUidGidObject nextUidGid:1
+olcObjectClasses: {0}( nextUidGidObject:1 NAME 'uidNext' DESC 'LDAP object whi
+ ch tracks the next available UID number' SUP top STRUCTURAL MUST ( cn $ uidNu
+ mber ) MAY description )
+olcObjectClasses: {1}( nextUidGidObject:2 NAME 'gidNext' DESC 'LDAP object whi
+ ch tracks the next available GID number' SUP top STRUCTURAL MUST ( cn $ gidNu
+ mber ) MAY description )

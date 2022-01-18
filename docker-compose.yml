@@ -55,6 +55,7 @@ services:
     environment:
       - LDAP_ADMIN_USERNAME=admin
       - LDAP_ADMIN_PASSWORD=adminpassword
+      - LDAP_CONFIG_ADMIN_ENABLED=yes
       - LDAP_ALLOW_ANON_BINDING=yes
       - LDAP_ROOT=dc=cesga,dc=es
       - BITNAMI_DEBUG=true
@@ -67,4 +68,5 @@ services:
       - my-network
     volumes:
       - ${LDIF_FOLDER}:/ldifs
+      - ${SCHEMA_FOLDER}:/schema
       - openldap_data:/bitnami/openldap
