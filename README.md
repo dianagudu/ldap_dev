@@ -43,7 +43,7 @@ You can configure the authorisation in `$CONFIG_FOLDER/motley_cue.conf`. Restart
 
 ### LDAP configuration
 
-You can control the feudalAdapter configuration for the LDAP backend in [config_files/feudal_adapter.conf](config_files/feudal_adapter.conf#L207). There are two modes currently supported:
+You can control the feudalAdapter configuration for the LDAP backend in [config_files/feudal_adapter.conf](config_files/feudal_adapter.conf#L207). There are three modes currently supported:
 
 - read_only: there is read only access to the LDAP, therefore the local accounts
     need to already be created in the LDAP and mapped to the federated accounts through a user 
@@ -52,6 +52,8 @@ You can control the feudalAdapter configuration for the LDAP backend in [config_
 - pre_created: the local accounts already exist in the LDAP, but they are not mapped;
     the feudal adapter should have write access to the LDAP to modify entries in
     order to add the mapping to the federated OIDC account.
+- full_access: the feudal adapter has full access to the LDAP and can add/delete/update
+    entries containing local accounts and mappings.
 
 You can modify the user database in the LDAP in [ldifs/test_users.ldif](ldifs/test_users.ldif).
 
