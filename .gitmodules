@@ -4,4 +4,4 @@
 [submodule "src/feudalAdapterLdf"]
 	path = src/feudalAdapterLdf
 	url = https://git.scc.kit.edu/feudal/feudalAdapterLdf.git
-	branch = ldap
+	branch = approval-workflow
