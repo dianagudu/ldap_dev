@@ -58,9 +58,9 @@ services:
       - LDAP_CONFIG_ADMIN_ENABLED=yes
       - LDAP_ALLOW_ANON_BINDING=yes
       - LDAP_ROOT=dc=cesga,dc=es
-      - BITNAMI_DEBUG=true
+      - LDAP_LOGLEVEL=0
     healthcheck:
-      test: ["CMD", "curl", "-f", "ldap://localhost:1389"]
+      test: [ "CMD", "curl", "-f", "ldap://localhost:1389" ]
       interval: 1s
       timeout: 1s
       retries: 3
