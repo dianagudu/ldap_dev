@@ -8,29 +8,30 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     libcurl4 \
     curl \
-    gnupg2 \
+    gpg \
     libnss-ldapd \
-    libpam-ldapd
-RUN echo deb https://repo.data.kit.edu/debian/stable ./ >> /etc/apt/sources.list
-RUN curl repo.data.kit.edu/key.pgp > /etc/apt/trusted.gpg.d/kit-repo.gpg
-# RUN apt-key adv --keyserver hkp://pgp.surfnet.nl \
-#     --recv-keys ACDFB08FDC962044D87FF00B512839863D487A87
+    libpam-ldapd \
+    rsyslog
+RUN echo deb [signed-by=/etc/apt/trusted.gpg.d/kitrepo-archive.gpg] https://repo.data.kit.edu/debian/bullseye ./ \
+    >> /etc/apt/sources.list
+RUN curl repo.data.kit.edu/repo-data-kit-edu-key.gpg \
+    | gpg --dearmor \
+    > /etc/apt/trusted.gpg.d/kitrepo-archive.gpg
 RUN apt-get update && apt-get install -y \
-    pam-ssh-oidc\
+    pam-ssh-oidc-autoconfig=0.2.0-8 \
     && rm -rf /var/lib/apt/lists/*
 
 ##### ldap config
 
 
-##### pam config
-COPY pam-ssh-oidc-config.ini /etc/pam.d/pam-ssh-oidc-config.ini
-RUN echo "auth   sufficient pam_oidc_token.so config=/etc/pam.d/pam-ssh-oidc-config.ini\n$(cat /etc/pam.d/sshd)" > /etc/pam.d/sshd
-RUN echo "session    required   pam_mkhomedir.so skel=/etc/skel umask=0077\n" >> /etc/pam.d/sshd
-
 ##### ssh config
 RUN mkdir /run/sshd
 RUN echo "Include /etc/ssh/sshd_config.d/*.conf" >> /etc/ssh/sshd_config \
-    && echo "ChallengeResponseAuthentication yes" > /etc/ssh/sshd_config.d/oidc.conf
+    && echo "ChallengeResponseAuthentication yes" > /etc/ssh/sshd_config.d/oidc.conf \
+    && echo "KbdInteractiveAuthentication yes" >> /etc/ssh/sshd_config.d/oidc.conf
+
+##### pam config
+RUN sed -i "s/localhost/mc_endpoint/g" /etc/pam.d/pam-ssh-oidc-config.ini
 
 ##### motley-cue config
 RUN mkdir /etc/motley_cue /var/log/motley_cue /run/motley_cue \
@@ -59,10 +60,3 @@ RUN chmod +x /srv/runner.sh /srv/entrypoint.sh
 
 ENTRYPOINT [ "/srv/entrypoint.sh" ]
 CMD ["/srv/runner.sh"]
-
-
-FROM nginx:alpine as nginx
-RUN rm /etc/nginx/conf.d/default.conf \
-    && ln -s /config_files/nginx.motley_cue /etc/nginx/conf.d/default.conf
-EXPOSE 8080
-

@@ -1,3 +1,12 @@
+flaat>=1.1.10
+fastapi==0.*
+uvicorn[standard]==0.*
+gunicorn==20.*
+sqlitedict==2.*
+cryptography==41.*
+markdown==3.*
+pydantic-settings==2.*
+pydantic==2.*
 argparse>= 1.4.0
 backcall>=0.1.0
 certifi>=2019.6.16
@@ -22,10 +31,4 @@ Unidecode>=1.1.1
 urllib3>=1.25.3
 wcwidth>=0.1.7
 ldap3>=2.9.1
-flaat>=1.0.2
-fastapi==0.*
-uvicorn[standard]==0.*
-gunicorn==20.*
-sqlitedict==2.*
-cryptography==37.*
-notifiers==1.*
+trycourier>=0.1.0

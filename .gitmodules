@@ -1,7 +1,7 @@
 [submodule "src/motley_cue"]
 	path = src/motley_cue
 	url = git@github.com:dianagudu/motley_cue.git
+	branch = prerel
 [submodule "src/feudalAdapterLdf"]
 	path = src/feudalAdapterLdf
-	url = https://git.scc.kit.edu/feudal/feudalAdapterLdf
-	branch = approval-workflow
+	url = git@codebase.helmholtz.cloud:m-team/feudal/feudalAdapterLdf.git

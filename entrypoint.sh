@@ -9,7 +9,6 @@ if [ -z "$(ls -A /config_files)" ]; then
     cp /src/motley_cue/etc/motley_cue.conf /config_files
     cp /src/motley_cue/etc/feudal_adapter.conf /config_files
     cp /src/motley_cue/etc/gunicorn.conf.py /config_files
-    cp /erc/motley_cue/etc/nginx.motley_cue /config_files
     chown -R $USER_ID:$GROUP_ID /config_files
 fi
 

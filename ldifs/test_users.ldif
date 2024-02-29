@@ -33,7 +33,7 @@ dn: ou=groupshpc,ou=groups,dc=cesga,dc=es
 objectClass: organizationalUnit
 ou: groupshpc
 
-# # Add Diana Gudu to the organization
+# Add Diana Gudu to the organization
 # dn: uid=curso998,ou=usershpc,ou=users,dc=cesga,dc=es
 # # changetype: modify
 # objectClass: top
@@ -45,11 +45,27 @@ ou: groupshpc
 # description: Diana Gudu's EGI identity
 # loginShell: /bin/bash
 # uidNumber: 40998
-# gidNumber: 113
+# gidNumber: 998
 # homeDirectory: /home/cesga/cursos/curso998
-# gecos: c2370093c19496aeb46103cce3ccdc7b183f54ac9ba9c859dea94dfba23aacd5%40egi.eu@https%3A%2F%2Faai.egi.eu%2Foidc%2F
+# gecos: c2370093c19496aeb46103cce3ccdc7b183f54ac9ba9c859dea94dfba23aacd5%40egi.eu@https%3A%2F%2Faai.egi.eu%2Fauth%2Frealms%2Fegi
 # o: EGI
-# labeledURI: c2370093c19496aeb46103cce3ccdc7b183f54ac9ba9c859dea94dfba23aacd5%40egi.eu@https%3A%2F%2Faai.egi.eu%2Foidc%2F
+# labeledURI: c2370093c19496aeb46103cce3ccdc7b183f54ac9ba9c859dea94dfba23aacd5%40egi.eu@https%3A%2F%2Faai.egi.eu%2Fauth%2Frealms%2Fegi
+
+dn: uid=curso001,ou=usershpc,ou=users,dc=cesga,dc=es
+changetype: add
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: posixAccount
+uid: curso001
+uidNumber: 1001
+gidNumber: 999
+homeDirectory: /home/curso001
+loginShell: /bin/bash
+sn: Gudu
+givenName: Diana
+cn: Diana Gudu
+mail: diana.gudu@kit.edu
+labeledURI: c2370093c19496aeb46103cce3ccdc7b183f54ac9ba9c859dea94dfba23aacd5%40egi.eu@https%3A%2F%2Faai.egi.eu%2Fauth%2Frealms%2Fegi
 
 #dn: uid=dgudu,ou=usershpc,ou=users,dc=cesga,dc=es
 ## changetype: modify
@@ -86,3 +102,216 @@ ou: groupshpc
 # cn: egi-eu_eosc-synergy-eu
 # gidNumber: 998
 # description: A egi-eu_eosc-synergy-eu group
+# memberUid: curso001
+
+# version: 1
+# dn: cn=egi-eu_mteam-data-kit-edu,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: modify
+# add: memberUid
+# memberUid: curso998
+# -
+
+
+# # helmholtz-de_kit2, groupshpc, groups, cesga.es
+# dn: cn=helmholtz-de_kit2,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# cn: helmholtz-de_kit2
+# gidNumber: 1001
+# objectClass: top
+# objectClass: posixGroup
+# memberUid: curso002
+
+# # h-df-de_hdf, groupshpc, groups, cesga.es
+# dn: cn=h-df-de_hdf,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# cn: h-df-de_hdf
+# gidNumber: 1002
+# objectClass: top
+# objectClass: posixGroup
+# memberUid: curso002
+
+# # h-df-de_m-team, groupshpc, groups, cesga.es
+# dn: cn=h-df-de_m-team,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# cn: h-df-de_m-team
+# gidNumber: 1003
+# objectClass: top
+# objectClass: posixGroup
+# memberUid: curso002
+
+# # helmholtz-de_hifis_core, groupshpc, groups, cesga.es
+# dn: cn=helmholtz-de_hifis_core,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# cn: helmholtz-de_hifis_core
+# gidNumber: 1004
+# objectClass: top
+# objectClass: posixGroup
+# memberUid: curso002
+
+# # h-df-de_my_example_colab, groupshpc, groups, cesga.es
+# dn: cn=h-df-de_my_example_colab,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# cn: h-df-de_my_example_colab
+# gidNumber: 1005
+# objectClass: top
+# objectClass: posixGroup
+# memberUid: curso002
+
+# # helmholtz-de_hifis, groupshpc, groups, cesga.es
+# dn: cn=helmholtz-de_hifis,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# cn: helmholtz-de_hifis
+# gidNumber: 1006
+# objectClass: top
+# objectClass: posixGroup
+# memberUid: curso002
+
+# # helmholtz-de_helmholtz-member, groupshpc, groups, cesga.es
+# dn: cn=helmholtz-de_helmholtz-member,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# cn: helmholtz-de_helmholtz-member
+# gidNumber: 1007
+# objectClass: top
+# objectClass: posixGroup
+# memberUid: curso002
+
+# # curso002, usershpc, users, cesga.es
+# dn: uid=curso002,ou=usershpc,ou=users,dc=cesga,dc=es
+# uidNumber: 2001
+# gidNumber: 1002
+# objectClass: top
+# objectClass: inetOrgPerson
+# objectClass: posixAccount
+# homeDirectory: /home/curso002
+# loginShell: /bin/bash
+# uid: curso002
+# labeledURI: 1594a948-e5aa-44e8-9629-ffa606c9681e@https%3A%2F%2Flogin.helmholtz
+#  .de%2Foauth2
+# sn: Gudu
+# givenName: Diana
+# cn: Diana Gudu
+# mail: diana.gudu@kit.edu
+
+
+# version: 1
+# dn: cn=h-df-de_my_example_colab,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: add
+# objectClass: top
+# objectClass: posixGroup
+# cn: h-df-de_my_example_colab
+# gidNumber: 1000
+
+# version: 1
+# dn: cn=helmholtz-de_hifis_core,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: add
+# objectClass: top
+# objectClass: posixGroup
+# cn: helmholtz-de_hifis_core
+# gidNumber: 1001
+
+# version: 1
+# dn: cn=helmholtz-de_hifis,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: add
+# objectClass: top
+# objectClass: posixGroup
+# cn: helmholtz-de_hifis
+# gidNumber: 1002
+
+# version: 1
+# dn: cn=helmholtz-de_kit,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: add
+# objectClass: top
+# objectClass: posixGroup
+# cn: helmholtz-de_kit
+# gidNumber: 1003
+
+# version: 1
+# dn: cn=h-df-de_m-team,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: add
+# objectClass: top
+# objectClass: posixGroup
+# cn: h-df-de_m-team
+# gidNumber: 1004
+
+# version: 1
+# dn: cn=helmholtz-de_helmholtz-member,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: add
+# objectClass: top
+# objectClass: posixGroup
+# cn: helmholtz-de_helmholtz-member
+# gidNumber: 1005
+
+# version: 1
+# dn: cn=h-df-de_hdf,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: add
+# objectClass: top
+# objectClass: posixGroup
+# cn: h-df-de_hdf
+# gidNumber: 1006
+
+# version: 1
+# dn: uid=curso001,ou=usershpc,ou=users,dc=cesga,dc=es
+# changetype: add
+# objectClass: top
+# objectClass: inetOrgPerson
+# objectClass: posixAccount
+# uid: curso001
+# uidNumber: 1000
+# gidNumber: 1006
+# homeDirectory: /home/curso001
+# loginShell: /bin/bash
+# labeledURI: 1594a948-e5aa-44e8-9629-ffa606c9681e@https%3A%2F%2Flogin.helmholtz
+#  .de%2Foauth2
+# sn: Gudu
+# givenName: Diana
+# cn: Diana Gudu
+# mail: diana.gudu@kit.edu
+
+
+# version: 1
+# dn: cn=h-df-de_my_example_colab,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: modify
+# add: memberUid
+# memberUid: curso001
+# -
+
+
+# version: 1
+# dn: cn=helmholtz-de_helmholtz-member,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: modify
+# add: memberUid
+# memberUid: curso001
+# -
+
+
+# version: 1
+# dn: cn=helmholtz-de_hifis,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: modify
+# add: memberUid
+# memberUid: curso001
+# -
+
+
+# version: 1
+# dn: cn=helmholtz-de_hifis_core,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: modify
+# add: memberUid
+# memberUid: curso001
+# -
+
+
+# version: 1
+# dn: cn=h-df-de_m-team,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: modify
+# add: memberUid
+# memberUid: curso001
+# -
+
+
+# version: 1
+# dn: cn=h-df-de_hdf,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: modify
+# add: memberUid
+# memberUid: curso001
+# -
+
+
+# version: 1
+# dn: cn=helmholtz-de_kit,ou=groupshpc,ou=groups,dc=cesga,dc=es
+# changetype: modify
+# add: memberUid
+# memberUid: curso001
+# -

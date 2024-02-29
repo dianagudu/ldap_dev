@@ -33,15 +33,15 @@ services:
       - my-network
 
   nginx:
-    build:
-      context: .
-      target: nginx
+    image: nginx
     restart: on-failure
     hostname: "mc_endpoint"
+    expose:
+      - 8080
     ports:
       - "8080:8080"
     volumes:
-      - ${CONFIG_FOLDER}:/config_files
+      - ${CONFIG_FOLDER}/nginx.motley_cue:/etc/nginx/conf.d/default.conf
       - motley_cue_sock:/run/motley_cue
     networks:
       - my-network
@@ -58,11 +58,14 @@ services:
       - LDAP_CONFIG_ADMIN_ENABLED=yes
       - LDAP_ALLOW_ANON_BINDING=yes
       - LDAP_ROOT=dc=cesga,dc=es
-      - LDAP_LOGLEVEL=0
+      # - LDAP_LOGLEVEL=256
+      - BITNAMI_DEBUG=true
     healthcheck:
-      test: [ "CMD", "curl", "-f", "ldap://localhost:1389" ]
+      # test: [ "CMD", "curl", "ldap://ldap:1389" ]
+      test: [ "CMD", "ldapsearch", "-x", "-H", "ldap://ldap_server:1389", "-b", "dc=cesga,dc=es"]
       interval: 1s
       timeout: 1s
+      start_period: 40s
       retries: 3
     networks:
       - my-network
